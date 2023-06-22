@@ -79,5 +79,16 @@ public class MarkovTest {
         );
     }
 
+    public static void main(String[] args) throws IOException {
+        MarkovChain markovChain = new MarkovChain();
+        var list = markovChain.getNgramList(
+                new File("C:\\Users\\User\\Desktop\\ShrekMerge.txt"),
+                Pattern.compile("[-.=,?'!1-9]"),
+                2
+        );
+        var map = markovChain.mapNgrams(list);
+        System.out.println(list);
+        System.out.println(map);
+    }
 
 }
