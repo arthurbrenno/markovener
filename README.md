@@ -1,34 +1,124 @@
-<h1 align="center" id="title">Markov Chains</h1>
+<br/>
+<p align="center">
+  <a href="https://github.com/arthurbrenno/markovener">
+    <img src="https://cdn.discordapp.com/attachments/815753127537410102/1123697678124069045/Logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Work in progress. 06/28/23
+  <h3 align="center">Markovener</h3>
 
-<p align="center"><img src="https://socialify.git.ci/arthurbrenno/markovchains/image?font=Inter&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Solid&amp;pulls=1&amp;theme=Light" alt="project-image"></p>
+  <p align="center">
+    An amazing open-source engine for english text generation using Markov Chains and a large english language dataset.
+    <br/>
+    <br/>
+    <a href="https://github.com/arthurbrenno/markovener"><strong>Explore the docs »</strong></a>
+    <br/>
+    <br/>
+    <a href="https://github.com/arthurbrenno/markovener">View Demo</a>
+    .
+    <a href="https://github.com/arthurbrenno/markovener/issues">Report Bug</a>
+    .
+    <a href="https://github.com/arthurbrenno/markovener/issues">Request Feature</a>
+  </p>
+</p>
 
-<p id="description">This API provides you an easy way of dealing with large amount of data. It let's you map the ngrams words keys values and a lot of useful stuff!</p>
+![Downloads](https://img.shields.io/github/downloads/arthurbrenno/markovener/total) ![Contributors](https://img.shields.io/github/contributors/arthurbrenno/markovener?color=dark-green) ![Issues](https://img.shields.io/github/issues/arthurbrenno/markovener) ![License](https://img.shields.io/github/license/arthurbrenno/markovener) 
 
-<h2>Project Screenshots:</h2>
+## Table Of Contents
 
-<img src="https://cdn.discordapp.com/attachments/835536806262210560/1121455934384906240/image.png" alt="project-screenshot" width="1500" height="400/">
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
 
-  
-  
-<h2>🧐 Features</h2>
+## About The Project
 
-Here're some of the project's best features:
+![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123716357620502628/Frame_1.png?width=600&height=450)
 
-*   ngram support
-*   regex support
-*   backward tracking of words
-*   file reading
+There are many ways of generating readable text. This engine focus on a method called _Markov Chains_ and _English words mapping_.
 
-  
-  
-<h2>💻 Built with</h2>
+Here's why:
 
-Technologies used in the project:
+* **Stateless:** Markov Chains only depends on the previous state.
+* **Easy of use:** Anyone can use and understand the _Markovener_ in an easy way.
+* **Ngram power**: A common way of generating text is by dividing it into _ngrams_.
 
-*   Java
+There is also a common workflow that the Markovener could be used. And you can check it out in [documentation](/guides/content/editing-an-existing-page)
 
-<h2>🛡️ License:</h2>
+There are also test Classes Using JUnit for Unit Testing.
 
-This project is licensed under the MIT License.
+## Built With
+
+The project was built with raw Java SE 11 and an external dependeny for PDF File reading
+
+* [Java 11](https://www.java.com/)
+* [Apache Maven](https://maven.apache.org/)
+* [Apache PDFBox](https://pdfbox.apache.org/index.html)
+
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+* npm
+
+```sh
+npm install npm@latest -g
+```
+
+### Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/arthurbrenno/markovener.git
+```
+2. Go to target folder
+
+3. Find `markovener-VERSION.jar`
+
+Or you could download the `.jar` file [here](https://github.com/arthurbrenno/markovener)
+
+
+## Usage
+
+Simple usage example:
+![Screenshot](https://media.discordapp.net/attachments/815753127537410102/1123720938471567520/carbon_1.png?width=1260&height=533)
+
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+## Roadmap
+
+See the [open issues](https://github.com/arthurbrenno/markovener/issues) for a list of proposed features (and known issues).
+
+## Contributing
+
+You are free to contribute to this project. Any changes that would improve the engine **are appreciated**.
+
+### Creating A Pull Request
+
+1. Fork the Project
+2. Create your Feature Branch
+3. Commit your Changes 
+4. Push to the Branch
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/arthurbrenno/markovener/blob/main/LICENSE.md) for more information.
+
+## Authors
+
+* **Arthur Brenno** - *Sys. Inf. Student at Brazil* - [Arthur Brenno](https://github.com/arthurbrenno) - *Developer*
+
