@@ -61,10 +61,11 @@ public class NounService implements Randomizeable<String> {
 
    /**
     * Checks if a word is or not a noun.
+    * @param word the word to be checked.
     * @return true if it is a noun, false if it's not.
     */
-   public boolean isNoun(@NotNull String n) {
-      return commonNouns.contains(n.toLowerCase());
+   public boolean isNoun(@NotNull String word) {
+      return commonNouns.contains(word.toLowerCase());
    }
 
    /**

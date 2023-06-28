@@ -32,6 +32,7 @@ public class Article implements ReadableWord<String> {
    /**
     * Factory. Creates an Article
     * @return An Article object. This object will contain an article if the article provided is really an article.
+    * @param article to be verified.
     * @throws RuntimeException the argument is not an article.
     */
    @Contract("_ -> new")

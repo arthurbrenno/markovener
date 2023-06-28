@@ -14,7 +14,7 @@ import java.util.List;
 public class Mapper {
 
    /**
-    * Maps a ngram list into a HashMap: ngram(String) -> next common ngrams (List <- String)
+    * Maps a ngram list into a HashMap: ngram(String) - next common ngrams (List - String)
     * @param ngramsList to be mapped
     * @return A HashMap containing the ngrams and its most common next states/ngrams.
     */
@@ -40,7 +40,7 @@ public class Mapper {
    }
 
    /**
-    * Maps a ngram list backwards into a HashMap: ngram(String) -> previous common ngrams (List <- String)
+    * Maps a ngram list backwards into a HashMap: ngram(String) - previous common ngrams (List - String)
     * @param ngramsList to be mapped backwards
     * @return A HashMap containing the ngrams and its most common previous states/ngrams.
     */
@@ -65,7 +65,7 @@ public class Mapper {
    }
 
    /**
-    * Maps a word list into a HashMap: word(String) -> next common words (List <- String)
+    * Maps a word list into a HashMap: word(String) - next common words (List - String)
     * @param wordList to be mapped
     * @return A HashMap containing the ngrams and its most common next states/words.
     */
@@ -88,7 +88,7 @@ public class Mapper {
    }
 
    /**
-    * Maps a word list into a HashMap: word(String) -> previous common words (List <- String)
+    * Maps a word list into a HashMap: word(String) - previous common words (List - String)
     * @param wordList to be mapped
     * @return A HashMap containing the ngrams and its most common previous states/words.
     */

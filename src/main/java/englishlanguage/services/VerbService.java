@@ -60,7 +60,7 @@ public class VerbService implements Randomizeable{
 
    /**
     * Checks if a word is or not a verb
-    * @param word
+    * @param word the word to be checked.
     * @return true if the word is a verb, false otherwise.
     */
    public boolean isVerb(@NotNull String word) {

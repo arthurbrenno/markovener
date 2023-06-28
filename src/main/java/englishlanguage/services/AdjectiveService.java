@@ -61,15 +61,16 @@ public class AdjectiveService implements Randomizeable<String>{
 
    /**
     * Checks if a word is or not an adjective.
+    * @param word the word to be checked.
     * @return true if it is a noun, false if it's not.
     */
-   public boolean isAdjective(@NotNull String a) {
-      return commonAdjectives.contains(a);
+   public boolean isAdjective(@NotNull String word) {
+      return commonAdjectives.contains(word);
    }
 
    /**
     * Gets a random adjective from the adjective dataset.
-    * @return random adjective <- String
+    * @return random adjective - String
     */
    public String getRandom() {
       List<String> temp = new ArrayList<>(commonAdjectives);
