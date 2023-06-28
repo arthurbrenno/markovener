@@ -10,7 +10,7 @@
     An amazing open-source engine for english text generation using Markov Chains and a large english language dataset.
     <br/>
     <br/>
-    <a href="https://github.com/arthurbrenno/markovener"><strong>Explore the docs »</strong></a>
+    <a href="https://arthurbrenno.github.io/javadoc-markovener"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
     <a href="https://github.com/arthurbrenno/markovener">View Demo</a>
@@ -39,7 +39,7 @@
 
 ## About The Project
 
-![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123716357620502628/Frame_1.png?width=600&height=450)
+![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123755972700164096/Frame_1.png?width=600&height=450)
 
 There are many ways of generating readable text. This engine focus on a method called _Markov Chains_ and _English words mapping_.
 
@@ -49,7 +49,7 @@ Here's why:
 * **Easy of use:** Anyone can use and understand the _Markovener_ in an easy way.
 * **Ngram power**: A common way of generating text is by dividing it into _ngrams_.
 
-There is also a common workflow that the Markovener could be used. And you can check it out in [documentation](/guides/content/editing-an-existing-page)
+There is also a common workflow that the Markovener could be used. And you can check it out in [documentation](https://arthurbrenno.github.io/javadoc-markovener)
 
 There are also test Classes Using JUnit for Unit Testing.
 
