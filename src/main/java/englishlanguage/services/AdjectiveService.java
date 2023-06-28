@@ -8,15 +8,28 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class represents a single AdjectiveService object. The main goal is to load common adjectives txt file and see if a word is or not an Adjective.
+ * @since 1.0 SNAPSHOT
+ * @author Arthur Brenno
+ */
 public class AdjectiveService implements Randomizeable<String>{
 
-   Set<String> adjectives;
+   Set<String> commonAdjectives;
    private static AdjectiveService instance;
 
+   /**
+    * CONSTRUCTOR.
+    * initializes the adjectives list by loading a huge dataset of english common articles
+    */
    private AdjectiveService(){
-      adjectives = loadAdjectives();
+      commonAdjectives = loadAdjectives();
    }
 
+   /**
+    * Loads the adjectives dataset based on a default txt file.
+    * @return a HashSet (unordered list) of the common english adjectives based on a huge dataset.
+    */
    @Contract(" -> new")
    private @NotNull HashSet<String> loadAdjectives() {
       try (InputStream stream = AdjectiveService.class.getResourceAsStream("/parts_of_speech/adjectives/28K_adjectives.txt")) {
@@ -27,6 +40,18 @@ public class AdjectiveService implements Randomizeable<String>{
       }
    }
 
+   /**
+    * Getter.
+    * @return commonAdjectives HashSet.
+    */
+   public Set<String> adjectives() {
+      return commonAdjectives;
+   }
+
+   /**
+    * Gets Singleton instance method.
+    * @return the only instance of this class.
+    */
    public static AdjectiveService getInstance() {
       if (instance == null) {
          instance = new AdjectiveService();
@@ -34,8 +59,20 @@ public class AdjectiveService implements Randomizeable<String>{
       return instance;
    }
 
+   /**
+    * Checks if a word is or not an adjective.
+    * @return true if it is a noun, false if it's not.
+    */
+   public boolean isAdjective(@NotNull String a) {
+      return commonAdjectives.contains(a);
+   }
+
+   /**
+    * Gets a random adjective from the adjective dataset.
+    * @return random adjective <- String
+    */
    public String getRandom() {
-      List<String> temp = new ArrayList<>(adjectives);
+      List<String> temp = new ArrayList<>(commonAdjectives);
       return temp.get(ThreadLocalRandom.current().nextInt(temp.size()));
    }
 }
