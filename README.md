@@ -39,7 +39,7 @@
 
 ## About The Project
 
-![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123716357620502628/Frame_1.png?width=600&height=450)
+![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123755972700164096/Frame_1.png?width=600&height=450)
 
 There are many ways of generating readable text. This engine focus on a method called _Markov Chains_ and _English words mapping_.
 
