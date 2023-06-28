@@ -70,10 +70,6 @@ To get a local copy up and running follow these simple example steps.
 
 * Java 11
 
-```sh
-npm install npm@latest -g
-```
-
 ### Installation
 
 1. Clone the repo
