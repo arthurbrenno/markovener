@@ -72,16 +72,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Clone the repo
-
-```sh
-git clone https://github.com/arthurbrenno/markovener.git
-```
-2. Go to target folder
-
-3. Find `markovener-VERSION.jar`
-
-Or you could download the `.jar` file [here](https://github.com/arthurbrenno/markovener)
+* Go to releases
+* Find Markovener-1.0-SNAPSHOT.jar
+* Download it.
+* Drag and drop into your project (at dependencies).
 
 
 ## Usage
