@@ -1,4 +1,4 @@
-package $com.brc.markovfactory;
+package $com.brc.markovener;
 
 /**
  * Hello world!

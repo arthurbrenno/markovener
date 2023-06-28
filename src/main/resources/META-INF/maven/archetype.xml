@@ -1,5 +1,5 @@
 <archetype>
-  <id>markovfactory</id>
+  <id>markovener</id>
   <sources>
     <source>src/main/java/App.java</source>
   </sources>
