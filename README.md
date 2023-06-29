@@ -10,7 +10,7 @@
     An amazing open-source engine for english text generation that uses Markov Chains and a large english language dataset.
     <br/>
     <br/>
-    <a href="https://arthurbrenno.github.io/javadoc-markovener" target="_blank"><strong>Explore the docs »</strong></a>
+    <a href="https://arthurbrenno.github.io/javadoc-markovener" target=”_blank”><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
     <a href="https://github.com/arthurbrenno/markovener">View Demo</a>
