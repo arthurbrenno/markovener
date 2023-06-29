@@ -1,7 +1,7 @@
 package englishlanguage.services;
 
 /**
- * Represents an object that can be randomized.
+ * This functional interface represents an object that can be randomized.
  * @param <T> return type of the method.
  */
 @FunctionalInterface

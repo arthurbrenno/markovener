@@ -7,19 +7,24 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * This class represents a single ArticleService object. The main goal is to load common articles txt file and see if a word is or not an Article.
+ * This class represents a single ArticleService object. It is necessary because there's a need to check if a word
+ * is or not an article, in addition to having a whole articles' dataset powering up the text generation at its maximum.
+ * It was chosen to be a Singleton because there is no need to have another instance of this class in an application.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
 public class ArticleService implements Randomizeable{
-   private final Set<String> commonArticles = new HashSet<>(List.of("a", "an", "the"));
-   private static ArticleService instance = null;
+   private final Set<String> commonArticles;
+   private static ArticleService instance;
 
    /**
-    * CONSTRUCTOR
-    * instantiates an ArticleService object.
+    * Constructor.
+    * Instantiates an ArticleService object. There is no need to load a dataset because the common articles are just
+    * a few.
     */
-   private ArticleService() {}
+   private ArticleService() {
+      commonArticles = new HashSet<>(List.of("a", "an", "the"));
+   }
 
    /**
     * Getter.
@@ -30,9 +35,9 @@ public class ArticleService implements Randomizeable{
    }
 
    /**
-    * Checks if a word is or not an article.
-    * @param word to be analysed
-    * @return true if the word is an article, false if not
+    * Checks if a word is an article.
+    * @param word to be checked (will be converted to lower-case).
+    * @return true if the word is an article, false if not.
     */
    public boolean isArticle(@NotNull String word) {
       return commonArticles.contains(word.toLowerCase());
@@ -40,15 +45,15 @@ public class ArticleService implements Randomizeable{
 
    /**
     * Getter.
-    * @return commonArticles HashSet.
+    * @return commonArticles instance variable (HashSet).
     */
    public Set<String> articles() {
       return commonArticles;
    }
 
    /**
-    * Gets the Singleton instance.
-    * @return the only instance of this class.
+    * Gets the only instance of this class.
+    * @return ArticleService instance.
     */
    public static ArticleService getInstance() {
       if (instance == null) {
@@ -59,7 +64,7 @@ public class ArticleService implements Randomizeable{
 
    /**
     * Gets a random article from the commonArticles Set.
-    * @return random article
+    * @return random article.
     */
    public String getRandom() {
       List<String> temp = new ArrayList<>(commonArticles);
