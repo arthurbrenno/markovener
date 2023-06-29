@@ -14,7 +14,7 @@ public class TextFilterTest {
    public void textShouldBeClean() {
       assertEquals(
               "hi",
-              new TextFilter().cleanSymbols("!@!h75612i")
+              new TextFilter().clearSymbolsAndNumbers("!@!h75612i")
       );
    }
 
@@ -22,7 +22,7 @@ public class TextFilterTest {
    public void streamShouldBeClean() {
       assertEquals(
               Stream.of("hi").collect(Collectors.toList()),
-              new TextFilter().cleanSymbols(Stream.of("!@!h75612i")).collect(Collectors.toList())
+              new TextFilter().clearSymbolsAndNumbers(Stream.of("!@!h75612i")).collect(Collectors.toList())
       );
    }
 
