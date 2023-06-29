@@ -7,7 +7,7 @@
   <h3 align="center">Markovener</h3>
 
   <p align="center">
-    An amazing open-source engine for english text generation using Markov Chains and a large english language dataset.
+    An amazing open-source engine for english text generation that uses Markov Chains and a large english language dataset.
     <br/>
     <br/>
     <a href="https://arthurbrenno.github.io/javadoc-markovener"><strong>Explore the docs »</strong></a>
