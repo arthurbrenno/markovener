@@ -102,6 +102,14 @@ You are free to contribute to this project. Any changes that would improve the e
 4. Push to the Branch
 5. Open a Pull Request
 
+### Next features:
+
+* JSON Mapper
+* Map occurences
+* Export to JSON file
+* Read from CSV (should contain ngrams)
+* Random sentence generator
+
 ## License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/arthurbrenno/markovener/blob/main/LICENSE.md) for more information.
