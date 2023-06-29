@@ -1,7 +1,7 @@
 package englishlanguage;
 
 /**
- * This interface represents a single ReadableWord object. In order to instantiate, the word must be a ReadableWord.
+ * This functional interface provides a "getContent()" method to Words.
  * @param <T> The type of the content.
  */
 @FunctionalInterface

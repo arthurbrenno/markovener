@@ -1,12 +1,12 @@
 package files;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 /**
- * This class represents a PdfFile object. The main goal is to get the content inside the Txt.
+ * The main goal of this class is to get the content inside a txt file, in addition to represent a txtFile, to make
+ * it explicit.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
@@ -15,7 +15,7 @@ public class TxtFile implements ParseableFile<String> {
    private final Path path;
 
    /**
-    * CONSTRUCTOR
+    * Constructor.
     * @param path to the txt file.
     * @throws IllegalArgumentException if the file is not a txt.
     */
