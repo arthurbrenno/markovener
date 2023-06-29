@@ -1,22 +1,23 @@
 package engine;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class represents a mapper object. Its main functionality is to get a ngram/word list and map them forwardly or backwards.
+ * This class represents a mapper object. Its main functionality is to map ngrams or words into desired return type.
+ * In Markov Chains, there is a need to map the tokens into it's common next tokens (or previous tokens). That's what
+ * this class does.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
 public class Mapper {
 
    /**
-    * Maps a ngram list into a HashMap: ngram(String) - next common ngrams (List - String)
-    * @param ngramsList to be mapped
-    * @return A HashMap containing the ngrams and its most common next states/ngrams.
+    * Maps all the ngrams contained in the list into a HashMap. This maps all the ngrams to its specific next
+    * ngrams based on the order.
+    * @param ngramsList to be mapped.
+    * @return A HashMap containing the ngrams and its most common next ngrams.
     */
    public HashMap<String, List<String>> mapNgrams(@NotNull List<String> ngramsList) {
       final int order = ngramsList.get(0).length();
@@ -40,7 +41,8 @@ public class Mapper {
    }
 
    /**
-    * Maps a ngram list backwards into a HashMap: ngram(String) - previous common ngrams (List - String)
+    * Maps all the ngrams contained in the list into a HashMap. This maps all the ngrams to its specific previous ngrams based
+    * on the order.
     * @param ngramsList to be mapped backwards
     * @return A HashMap containing the ngrams and its most common previous states/ngrams.
     */
@@ -65,9 +67,10 @@ public class Mapper {
    }
 
    /**
-    * Maps a word list into a HashMap: word(String) - next common words (List - String)
-    * @param wordList to be mapped
-    * @return A HashMap containing the ngrams and its most common next states/words.
+    * Maps all the words contained in the list into a HashMap. This maps all the word to its specific next
+    * words.
+    * @param wordList to be mapped.
+    * @return A HashMap containing the words and its most common next words.
     */
    public HashMap<String, List<String>> mapWords(@NotNull List<String> wordList) {
       HashMap<String, List<String>> chain = new HashMap<>(wordList.size());
@@ -88,9 +91,10 @@ public class Mapper {
    }
 
    /**
-    * Maps a word list into a HashMap: word(String) - previous common words (List - String)
-    * @param wordList to be mapped
-    * @return A HashMap containing the ngrams and its most common previous states/words.
+    * Maps all the words contained in the list into a HashMap. This maps all the word to its specific previous
+    * words.
+    * @param wordList to be mapped.
+    * @return A HashMap containing the words and its most common previous words.
     */
    public HashMap<String, List<String>> mapWordsBackwards(@NotNull List<String> wordList) {
       HashMap<String, List<String>> chain = new HashMap<>(wordList.size());
