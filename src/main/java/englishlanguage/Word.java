@@ -5,6 +5,6 @@ package englishlanguage;
  * @param <T> The type of the content.
  */
 @FunctionalInterface
-public interface ReadableWord<T> {
+public interface Word<T> {
    T getContent();
 }

@@ -1,18 +1,20 @@
 package englishlanguage;
-
 import englishlanguage.services.VerbService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
 /**
- * This class represents a single Verb object. In order to instantiate, the word must be a verb.
+ * The main feature of this class is to store internally (as a String) an english
+ * verb.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class Verb implements ReadableWord<String> {
+public class Verb implements Word<String> {
+
    private final String verb;
 
    /**
-    * CONSTRUCTOR
+    * Constructor.
     * @param verb that will be set as instance variable.
     */
    private Verb(String verb) {
@@ -20,7 +22,7 @@ public class Verb implements ReadableWord<String> {
    }
 
    /**
-    * Factory. Creates a random Verb.
+    * Factory. Creates a random Verb object.
     * @return A Verb object. This object contains a random verb as "verb" instance variable.
     */
    @Contract(" -> new")
@@ -29,31 +31,31 @@ public class Verb implements ReadableWord<String> {
    }
 
    /**
-    * Factory. Creates a Verb.
-    * @param verb to be verified.
+    * Factory. Creates a Verb object if the input is valid.
+    * @param word to be verified.
     * @return A Verb object. This object will contain a verb if the verb provided is really a verb.
     * @throws RuntimeException if the verb provided is not a verb.
     */
    @Contract("_ -> new")
-   public static @NotNull Verb createVerb(String verb) {
-      if (!VerbService.getInstance().isVerb(verb)) {
-         throw new RuntimeException(String.format("%s is not a verb.", verb));
+   public static @NotNull Verb createVerb(String word) {
+      if (!VerbService.getInstance().isVerb(word)) {
+         throw new RuntimeException(String.format("%s is not a verb.", word));
       }
-      return new Verb(verb);
+      return new Verb(word);
    }
 
    /**
     * Factory. Creates a verb by the input or a random verb.
-    * @param verb to be verified.
+    * @param word to be verified.
     * @return Verb instance.
     */
    @Contract("_ -> new")
-   public static @NotNull Verb createOrRandom(String verb) {
+   public static @NotNull Verb createOrRandom(String word) {
       VerbService verbs = VerbService.getInstance();
-      if (!verbs.isVerb(verb)) {
+      if (!verbs.isVerb(word)) {
          return new Verb(verbs.getRandom());
       }
-      return new Verb(verb);
+      return new Verb(word);
    }
 
    /**
@@ -63,4 +65,5 @@ public class Verb implements ReadableWord<String> {
    public String getContent() {
       return this.verb;
    }
+
 }

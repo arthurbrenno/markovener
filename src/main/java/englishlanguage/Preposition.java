@@ -1,18 +1,20 @@
 package englishlanguage;
-
 import englishlanguage.services.PrepositionService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
 /**
- * This class represents a single Preposition object. In order to instantiate, the word must be a preposition.
+ * The main feature of this class is to store internally (as a String) an english
+ * preposition.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class Preposition implements ReadableWord<String> {
+public class Preposition implements Word<String> {
+
    private final String preposition;
 
    /**
-    * CONSTRUCTOR
+    * Constructor.
     * @param preposition that will be set as instance variable.
     */
    private Preposition(String preposition) {
@@ -20,7 +22,7 @@ public class Preposition implements ReadableWord<String> {
    }
 
    /**
-    * Factory. Creates a random Preposition.
+    * Factory. Creates a random Preposition object.
     * @return A Preposition object. This object contains a random preposition as "preposition" instance variable.
     */
    @Contract(" -> new")
@@ -64,4 +66,5 @@ public class Preposition implements ReadableWord<String> {
    public String getContent() {
       return preposition;
    }
+
 }

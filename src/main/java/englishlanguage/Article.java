@@ -1,27 +1,30 @@
 package englishlanguage;
-
 import englishlanguage.services.ArticleService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This class represents a single Article object. In order to instantiate, the word must be an article.
+ * The main feature of this class is to store internally (as a String) an english
+ * article.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class Article implements ReadableWord<String> {
+public class Article implements Word<String> {
    private final String article;
 
    /**
-    * CONSTRUCTOR
-    * @param article that will be set as instance variable.
+    * Constructor.
+    * @param article will be set as instance variable.
     */
    private Article(String article) {
       this.article = article;
    }
 
    /**
-    * Factory. Creates a random Article
+    * Factory.
+    * Creates a random Article object.
+    * This object will contain, as its only instance variable, a random
+    * english article.
     * @return An Article object. This object contains a random article as "article" instance variable
     */
    @Contract(" -> new")
@@ -30,7 +33,7 @@ public class Article implements ReadableWord<String> {
    }
 
    /**
-    * Factory. Creates an Article
+    * Factory. Creates an Article if the input is valid.
     * @return An Article object. This object will contain an article if the article provided is really an article.
     * @param article to be verified.
     * @throws RuntimeException the argument is not an article.
