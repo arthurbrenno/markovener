@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * This class represents a Tokenizer object. Tokenization is a common step when dealing with Markov Chains. This
+ * Provides methods to tokenize texts. Tokenization is a common step when dealing with Markov Chains. This
  * class is supposed to help you to tokenize your text into ngrams or words.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno

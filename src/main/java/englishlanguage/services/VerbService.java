@@ -7,7 +7,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * This class represents a single VerbService object. It is necessary because there's a need to check if a word
+ * Provides methods to classify words.
+ * It is necessary because there's a need to check if a word
  * is or not a verb, in addition to having a whole verbs dataset to power up the text generation at its maximum.
  * It was chosen to be a Singleton because there is no need to have another instance of this class in an application.
  * @since 1.0 SNAPSHOT

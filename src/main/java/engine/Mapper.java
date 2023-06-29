@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class represents a mapper object. Its main functionality is to map ngrams or words into desired return type.
- * In Markov Chains, there is a need to map the tokens into it's common next tokens (or previous tokens). That's what
+ * Provides methods to map tokens.
+ * Its main functionality is to map ngrams or words into a desired return type.
+ * In Markov Chains, there is a need to map the tokens into its common next tokens (or previous tokens).
+ * That's what
  * this class does.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno

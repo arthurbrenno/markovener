@@ -3,8 +3,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.stream.Stream;
 
 /**
- * This class represents a TextFilter object. When dealing with tokenization, a common approach before doing it is
- * cleaning up the text. That means that this class is supposed to clear unwanted characters from a text.
+ * The main purpose of this class is to clear your text. When dealing with tokenization, a common approach before
+ * doing it is cleaning up the text first. That means that this class is supposed to clear unwanted characters from a
+ * text.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
