@@ -39,6 +39,12 @@
 
 ## About The Project
 
+
+
+https://github.com/arthurbrenno/markovener/assets/64020210/50930660-b934-4c7e-a783-d57f2483a5ed
+
+
+
 ![Screen Shot](https://media.discordapp.net/attachments/815753127537410102/1123755972700164096/Frame_1.png?width=600&height=450)
 
 There are many ways of generating readable text. This engine focus on a method called _Markov Chains_ and _English words mapping_.
