@@ -1,10 +1,12 @@
-package englishlanguage.services;
+package utility.services;
 
 /**
  * This functional interface represents an object that can be randomized.
  * @param <T> return type of the method.
  */
-@FunctionalInterface
-public interface Randomizeable<T> {
-   T getRandom();
+public interface Randomizeable {
+   static String getRandom() {
+      return null;
+   }
+
 }

@@ -9,14 +9,14 @@ import java.util.stream.Stream;
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class TextFilter {
+public final class TextFilter {
 
    /**
     * Cleans all the non-letter characters from the text.
     * @param text to be cleaned.
     * @return cleaned text.
     */
-   public String clearSymbolsAndNumbers(@NotNull String text) {
+   public static String clearSymbolsAndNumbers(@NotNull String text) {
       return text.replaceAll("[^a-zA-Z]", "");
    }
 
@@ -25,7 +25,7 @@ public class TextFilter {
     * @param textStream Stream to be cleaned.
     * @return cleaned stream.
     */
-   public Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
+   public static Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
       return textStream.map(w -> w.replaceAll("[^a-zA-Z]", ""));
    }
 

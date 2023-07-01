@@ -1,4 +1,4 @@
-package englishlanguage.services;
+package utility.services;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;

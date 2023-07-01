@@ -1,4 +1,4 @@
-package englishlanguage.services;
+package utility.services;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;

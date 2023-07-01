@@ -1,5 +1,5 @@
 package englishlanguage;
-import englishlanguage.services.VerbService;
+import utility.services.VerbService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

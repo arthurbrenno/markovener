@@ -1,5 +1,5 @@
 package englishlanguage;
-import englishlanguage.services.NounService;
+import utility.services.NounService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 

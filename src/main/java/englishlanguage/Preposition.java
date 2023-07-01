@@ -1,5 +1,5 @@
 package englishlanguage;
-import englishlanguage.services.PrepositionService;
+import utility.services.PrepositionService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
