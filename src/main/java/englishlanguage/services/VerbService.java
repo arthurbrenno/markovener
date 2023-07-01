@@ -1,4 +1,4 @@
-package utility.services;
+package englishlanguage.services;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
@@ -14,30 +14,14 @@ import java.util.concurrent.ThreadLocalRandom;
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class VerbService implements Randomizeable {
+public final class VerbService {
 
-   private Set<String> commonVerbs;
-   private static VerbService instance;
-
-   /**
-    * Constructor.
-    * The constructor of this class is responsible for loading all the common verbs of the english language into the
-    * "commonVerbs" instance variable (HashSet)
-    */
-   private VerbService() {
-      commonVerbs = loadVerbs();
-   }
+   private static final Set<String> commonVerbs = loadVerbs();
 
    /**
-    * Gets the only instance of this class (Singleton).
-    * @return VerbService instance.
+    * This class is not instantiable
     */
-   public static VerbService getInstance() {
-      if (instance == null) {
-         instance = new VerbService();
-      }
-      return instance;
-   }
+   private VerbService() {}
 
    /**
     * This method is responsible for loading all the common verbs of the english language and putting them into
@@ -45,7 +29,7 @@ public class VerbService implements Randomizeable {
     * @return a HashSet of the common english verbs based on a dataset located at "resources."
     */
    @Contract(" -> new")
-   private @NotNull HashSet<String> loadVerbs() {
+   private static @NotNull HashSet<String> loadVerbs() {
       try (InputStream stream = VerbService.class.getResourceAsStream("/parts_of_speech/verbs/31K_verbs.txt")) {
          assert stream != null;
          return new HashSet<>(Arrays.asList(new String(stream.readAllBytes()).split(System.lineSeparator())));
@@ -58,7 +42,7 @@ public class VerbService implements Randomizeable {
     * Getter.
     * @return commonVerbs instance variable (HashSet).
     */
-   public Set<String> commonVerbs() {
+   public static Set<String> commonVerbs() {
       return commonVerbs;
    }
 
@@ -67,7 +51,7 @@ public class VerbService implements Randomizeable {
     * @param word to be checked.
     * @return true if the word is a verb, false otherwise.
     */
-   public boolean isVerb(@NotNull String word) {
+   public static boolean isVerb(@NotNull String word) {
       return commonVerbs.contains(word.toLowerCase());
    }
 
@@ -75,7 +59,7 @@ public class VerbService implements Randomizeable {
     * Gets a random verb based on the most common verbs of the english language.
     * @return the random verb.
     */
-   public String getRandom() {
+   public static String getRandom() {
       List<String> temp = new ArrayList<>(commonVerbs);
       return temp.get(ThreadLocalRandom.current().nextInt(temp.size()));
    }

@@ -1,11 +1,13 @@
 package englishlanguage;
-import utility.services.PrepositionService;
+import englishlanguage.services.PrepositionService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * The main feature of this class is to store internally (as a String) an english
  * preposition.
+ * The idea of this class is to provide a short and easy way to classify a word in respect to english language. This
+ * could be used with the Markov Chains to create clearer random sentences and provide a good way to classify words.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
@@ -27,7 +29,7 @@ public class Preposition implements Word<String> {
     */
    @Contract(" -> new")
    public static @NotNull Preposition createRandom() {
-      return new Preposition(PrepositionService.getInstance().getRandom());
+      return new Preposition(PrepositionService.getRandom());
    }
 
    /**
@@ -38,7 +40,7 @@ public class Preposition implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Preposition createPreposition(String preposition) {
-      if (PrepositionService.getInstance().isPreposition(preposition)) {
+      if (PrepositionService.isPreposition(preposition)) {
          throw new RuntimeException(String.format("%s is not a preposition.", preposition));
       }
       return new Preposition(preposition);
@@ -51,9 +53,8 @@ public class Preposition implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Preposition createOrRandom(String preposition) {
-      PrepositionService checker = PrepositionService.getInstance();
-      if (!checker.isPreposition(preposition)) {
-         return new Preposition(checker.getRandom());
+      if (!PrepositionService.isPreposition(preposition)) {
+         return new Preposition(PrepositionService.getRandom());
       }
       return new Preposition(preposition);
    }

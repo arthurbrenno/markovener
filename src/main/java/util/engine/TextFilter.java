@@ -1,4 +1,4 @@
-package engine;
+package util.engine;
 import org.jetbrains.annotations.NotNull;
 import java.util.stream.Stream;
 
@@ -16,7 +16,7 @@ public final class TextFilter {
     * @param text to be cleaned.
     * @return cleaned text.
     */
-   public static String clearSymbolsAndNumbers(@NotNull String text) {
+   public String clearSymbolsAndNumbers(@NotNull String text) {
       return text.replaceAll("[^a-zA-Z]", "");
    }
 
@@ -25,7 +25,7 @@ public final class TextFilter {
     * @param textStream Stream to be cleaned.
     * @return cleaned stream.
     */
-   public static Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
+   public Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
       return textStream.map(w -> w.replaceAll("[^a-zA-Z]", ""));
    }
 

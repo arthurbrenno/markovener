@@ -1,11 +1,13 @@
 package englishlanguage;
-import utility.services.VerbService;
+import englishlanguage.services.VerbService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * The main feature of this class is to store internally (as a String) an english
  * verb.
+ * The idea of this class is to provide a short and easy way to classify a word in respect to english language. This
+ * could be used with the Markov Chains to create clearer random sentences and provide a good way to classify words.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
@@ -27,7 +29,7 @@ public class Verb implements Word<String> {
     */
    @Contract(" -> new")
    public static @NotNull Verb createRandom() {
-      return new Verb(VerbService.getInstance().getRandom());
+      return new Verb(VerbService.getRandom());
    }
 
    /**
@@ -38,7 +40,7 @@ public class Verb implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Verb createVerb(String word) {
-      if (!VerbService.getInstance().isVerb(word)) {
+      if (!VerbService.isVerb(word)) {
          throw new RuntimeException(String.format("%s is not a verb.", word));
       }
       return new Verb(word);
@@ -51,9 +53,8 @@ public class Verb implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Verb createOrRandom(String word) {
-      VerbService verbs = VerbService.getInstance();
-      if (!verbs.isVerb(word)) {
-         return new Verb(verbs.getRandom());
+      if (!VerbService.isVerb(word)) {
+         return new Verb(VerbService.getRandom());
       }
       return new Verb(word);
    }

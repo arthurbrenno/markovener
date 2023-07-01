@@ -1,4 +1,4 @@
-package utility.services;
+package englishlanguage.services;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
@@ -15,30 +15,14 @@ import java.util.concurrent.ThreadLocalRandom;
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class PrepositionService implements Randomizeable<String> {
+public final class PrepositionService {
 
-   private final Set<String> commonPrepositions;
-   private static PrepositionService instance = null;
-
-   /**
-    * Constructor.
-    * The constructor of this object is responsible for loading all the common prepositions of the english language
-    * into a HashSet "commonPrepositions."
-    */
-   private PrepositionService() {
-      commonPrepositions = loadCommonPrepositions();
-   }
+   private static final Set<String> commonPrepositions = loadCommonPrepositions();
 
    /**
-    * Gets the only instance of this class.
-    * @return PrepositionService instance.
+    * This class is not instantiable
     */
-   public static PrepositionService getInstance() {
-      if (instance == null) {
-         instance = new PrepositionService();
-      }
-      return instance;
-   }
+   private PrepositionService() {}
 
    /**
     * This method is responsible for loading all the common prepositions of the english language and putting them into
@@ -46,7 +30,7 @@ public class PrepositionService implements Randomizeable<String> {
     * @return a HashSet of the common english prepositions based on a dataset located at "resources."
     */
    @Contract(" -> new")
-   private @NotNull HashSet<String> loadCommonPrepositions() {
+   private static @NotNull HashSet<String> loadCommonPrepositions() {
       try (InputStream stream = PrepositionService.class.getResourceAsStream("/parts_of_speech/prepositions/70_prepositions.txt")) {
          assert stream != null;
          return new HashSet<>(Arrays.asList(new String(stream.readAllBytes()).split(System.lineSeparator())));
@@ -59,7 +43,7 @@ public class PrepositionService implements Randomizeable<String> {
     * Getter.
     * @return the commonPrepositions instance variable (HashSet).
     */
-   public Set<String> commonPrepositions() {
+   public static Set<String> commonPrepositions() {
       return commonPrepositions;
    }
 
@@ -68,7 +52,7 @@ public class PrepositionService implements Randomizeable<String> {
     * @param word to be analyzed.
     * @return true if the word is a preposition found in a database, false if not.
     */
-   public boolean isPreposition(@NotNull String word) {
+   public static boolean isPreposition(@NotNull String word) {
       return commonPrepositions.contains(word.toLowerCase());
    }
 
@@ -76,7 +60,7 @@ public class PrepositionService implements Randomizeable<String> {
     * Gets a random preposition from the commonPrepositions HashSet.
     * @return a random preposition.
     */
-   public String getRandom() {
+   public static String getRandom() {
       List<String> temp = new ArrayList<>(commonPrepositions);
       return temp.get(ThreadLocalRandom.current().nextInt(temp.size()));
    }

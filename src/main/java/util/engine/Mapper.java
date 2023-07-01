@@ -1,4 +1,4 @@
-package engine;
+package util.engine;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public final class Mapper {
     * @param ngramsList to be mapped.
     * @return A HashMap containing the ngrams and its most common next ngrams.
     */
-   public static HashMap<String, List<String>> mapNgrams(@NotNull List<String> ngramsList) {
+   public @NotNull HashMap<String, List<String>> mapNgrams(@NotNull List<String> ngramsList) {
       final int order = ngramsList.get(0).length();
       HashMap<String, List<String>> chain = new HashMap<>(ngramsList.size());
 
@@ -48,7 +48,7 @@ public final class Mapper {
     * @param ngramsList to be mapped backwards
     * @return A HashMap containing the ngrams and its most common previous states/ngrams.
     */
-   public static HashMap<String, List<String>> mapNgramsBackwards(@NotNull List<String> ngramsList) {
+   public @NotNull HashMap<String, List<String>> mapNgramsBackwards(@NotNull List<String> ngramsList) {
       HashMap<String, List<String>> chain = new HashMap<>(ngramsList.size());
       final int order = ngramsList.get(0).length();
       for (int i = ngramsList.size() - 1; i >= order; --i) {
@@ -74,7 +74,7 @@ public final class Mapper {
     * @param wordList to be mapped.
     * @return A HashMap containing the words and its most common next words.
     */
-   public static HashMap<String, List<String>> mapWords(@NotNull List<String> wordList) {
+   public @NotNull HashMap<String, List<String>> mapWords(@NotNull List<String> wordList) {
       HashMap<String, List<String>> chain = new HashMap<>(wordList.size());
       for (int i = 0; i < wordList.size() - 1; ++i) {
 
@@ -98,7 +98,7 @@ public final class Mapper {
     * @param wordList to be mapped.
     * @return A HashMap containing the words and its most common previous words.
     */
-   public static HashMap<String, List<String>> mapWordsBackwards(@NotNull List<String> wordList) {
+   public @NotNull HashMap<String, List<String>> mapWordsBackwards(@NotNull List<String> wordList) {
       HashMap<String, List<String>> chain = new HashMap<>(wordList.size());
 
       for (int i = wordList.size() - 1; i > 0; --i) {

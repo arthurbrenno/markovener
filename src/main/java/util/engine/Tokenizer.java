@@ -1,4 +1,4 @@
-package engine;
+package util.engine;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +22,7 @@ public final class Tokenizer {
     * @param order ngram size.
     * @return a List containing all the ngrams of the text.
     */
-   public static List<String> getNgrams(@NotNull String text, int order) {
+   public List<String> getNgrams(@NotNull String text, int order) {
       List<String> result = new ArrayList<>();
       for (int i = 0; i <= text.length() - order; ++i) {
          result.add(text.substring(i, i + order));
@@ -36,7 +36,7 @@ public final class Tokenizer {
     * @param text to be tokenized.
     * @return a List containing all the words of a text.
     */
-   public static List<String> getWords(@NotNull String text) {
+   public List<String> getWords(@NotNull String text) {
       String[] words = text.split(" ");
       return new ArrayList<>(Arrays.asList(words));
    }
@@ -47,7 +47,7 @@ public final class Tokenizer {
     * @param text Stream to be tokenized.
     * @return a List containing all the words of a text.
     */
-   public static List<String> getWords(@NotNull Stream<String> text) {
+   public List<String> getWords(@NotNull Stream<String> text) {
       return text.map(w -> w.split(" "))
                  .flatMap(Stream::of)
                  .collect(Collectors.toList());

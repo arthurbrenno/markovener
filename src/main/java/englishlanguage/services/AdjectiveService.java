@@ -1,4 +1,4 @@
-package utility.services;
+package englishlanguage.services;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
@@ -9,13 +9,18 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Provides methods to classify words. It is necessary because there's a need to check if a word
  * is or not an adjective, in addition to having a whole adjectives' dataset to power up the text generation at its maximum.
- * It was chosen to be a Singleton because there is no need to have another instance of this class in an application.
+ * It was chosen to be static because there is no need to have another instance of this class in an application.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public final class AdjectiveService implements Randomizeable {
+public final class AdjectiveService {
 
-   private static Set<String> commonAdjectives = loadCommonAdjectives();
+   private static final Set<String> commonAdjectives = loadCommonAdjectives();
+
+   /**
+    * This class is not instantiable
+    */
+   private AdjectiveService() {}
 
    /**
     * This method is responsible for loading all the common adjectives of the english language and putting them into
@@ -57,4 +62,5 @@ public final class AdjectiveService implements Randomizeable {
       List<String> temp = new ArrayList<>(commonAdjectives);
       return temp.get(ThreadLocalRandom.current().nextInt(temp.size()));
    }
+
 }
