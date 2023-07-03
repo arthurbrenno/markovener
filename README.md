@@ -110,9 +110,7 @@ You are free to contribute to this project. Any changes that would improve the e
 
 ### Next features:
 
-* JSON Mapper
-* Map occurences
-* Export to JSON file
+* Map occurences (eliminates duplicates)
 * Read from CSV (should contain ngrams)
 * Random sentence generator
 
