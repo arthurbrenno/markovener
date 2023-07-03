@@ -1,9 +1,8 @@
-package util.engine;
+package markovener.engine;
 import com.google.gson.Gson;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,47 +12,91 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The Markovener class provides short and elegant ways to store and get the token list and Markov-Chain data
+ * structures of a text.
+ * It has basic getters for each instance variable and enforces immutability for data safety.
+ * This class is NOT thread-safe and should not be used in parallel.
+ * @since Alpha 1.0
+ */
 public final class Markovener {
 
    private final List<String> tokens;
-   private final HashMap<String, List<String>> map;
+   private final HashMap<String, List<String>> markovChain;
    private final String jsonRepresentation;
 
 
+   /**
+    * CONSTRUCTOR (ngrams). It expects to receive a text that has already passed through a filtering process.
+    * @param text that will be tokenized in a 'ngram way.'
+    * @param order ngrams order.
+    */
    private Markovener(String text, int order) {
       tokens = tokenizeNgrams(text, order);
-      map = mapNgrams(tokens);
-      jsonRepresentation = new Gson().toJson(map);
+      markovChain = mapNgrams(tokens);
+      jsonRepresentation = new Gson().toJson(markovChain);
    }
 
+   /**
+    * CONSTRUCTOR (words). It expects to receive a text that has already passed through a filtering process.
+    * @param text that will be tokenized by words.
+    */
    private Markovener(String text) {
       tokens = tokenizeWords(text);
-      map = mapWords(tokens);
-      jsonRepresentation = new Gson().toJson(map);
+      markovChain = mapWords(tokens);
+      jsonRepresentation = new Gson().toJson(markovChain);
    }
 
-
+   /**
+    * Factory. Creates a Markovener object by calling the private constructor.
+    * @param filteredText to be tokenized and mapped.
+    * @param order to split the ngrams.
+    * @return an instance of the Markovener class tokenized and mapped by ngrams.
+    */
    @Contract("_, _ -> new")
    public static @NotNull Markovener createByNgrams(String filteredText, int order) {
       return new Markovener(filteredText, order);
    }
 
+   /**
+    * Factory. Creates a Markovener object by calling the private constructor.
+    * @param filteredText to be tokenized and mapped.
+    * @return an instance of the Markovener class tokenized and mapped by words.
+    */
    public static @NotNull Markovener createByWords(String filteredText) {
       return new Markovener(filteredText);
    }
 
+   /**
+    * Getter
+    * @return token list - instance variable.
+    */
    public List<String> tokens() {
       return tokens;
    }
 
-   public Map<String, List<String>> map() {
-      return map;
+   /**
+    * Getter
+    * @return markov-chain map - instance variable.
+    */
+   public Map<String, List<String>> markovChain() {
+      return markovChain;
    }
 
+   /**
+    * Getter
+    * @return jsonRepresentation - instance variable.
+    */
    public String jsonRepresentation() {
       return jsonRepresentation;
    }
 
+   /**
+    * Saves the jsonRepresentation String instance variable into a new json file.
+    * @param directory to create a new json file
+    * @throws IOException if some IOException occurs. Your path might be invalid or the directory is not accessible by
+    * the application.
+    */
    public void save(@NotNull Path directory) throws IOException {
       final Path finalPath = Path.of(new StringBuilder(directory.toString()).append("\\output.json").toString());
       boolean success = new File(finalPath.toUri()).createNewFile();
@@ -62,6 +105,12 @@ public final class Markovener {
       }
    }
 
+   /**
+    * Tokenizes text into ngrams based in the order.
+    * @param text to be tokenized
+    * @param order to split ngrams
+    * @return a List of the ngrams.
+    */
    private @NotNull List<String> tokenizeNgrams(@NotNull String text, int order) {
       List<String> result = new ArrayList<>();
       for (int i = 0; i <= text.length() - order; ++i) {
@@ -70,10 +119,21 @@ public final class Markovener {
       return result;
    }
 
+   /**
+    * Tokenizes a text into words.
+    * @param text to be tokenized.
+    * @return a List of the text words.
+    */
    private @NotNull @Unmodifiable List<String> tokenizeWords(@NotNull String text) {
       return List.of(text.split(" "));
    }
 
+   /**
+    * Maps the tokens (ngrams) into its next associated ngrams based on the order.
+    * @param tokens to be mapped.
+    * @return a HashMap of the ngrams.
+    * @apiNote the mapped ngrams are taken by current-ngram + order.
+    */
    private @NotNull HashMap<String, List<String>> mapNgrams(@NotNull final List<String> tokens) {
       final HashMap<String, List<String>> chain = new HashMap<>(tokens.size());
       final int order = tokens.get(0).length();
@@ -89,6 +149,12 @@ public final class Markovener {
       return chain;
    }
 
+   /**
+    * Maps the tokens (words) into its next associated ngrams based by words.
+    * @param tokens to be mapped.
+    * @return a HashMap of the words.
+    * @apiNote the mapped words are taken by current-word + 1.
+    */
    private @NotNull HashMap<String, List<String>> mapWords(@NotNull final List<String> tokens) {
       final HashMap<String, List<String>> chain = new HashMap<>(tokens.size());
       for (int i = 0; i < tokens.size() - 1; ++i) {
@@ -102,4 +168,5 @@ public final class Markovener {
       }
       return chain;
    }
+
 }

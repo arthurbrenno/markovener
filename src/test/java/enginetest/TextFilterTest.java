@@ -1,6 +1,6 @@
 package enginetest;
 
-import util.engine.TextFilter;
+import util.TextFilter;
 import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
