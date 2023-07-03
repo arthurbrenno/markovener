@@ -16,7 +16,7 @@ public final class TextFilter {
     * @param text to be cleaned.
     * @return cleaned text.
     */
-   public String clearSymbolsAndNumbers(@NotNull String text) {
+   public static String clearSymbolsAndNumbers(@NotNull String text) {
       return text.replaceAll("[^a-zA-Z]", "");
    }
 
@@ -25,8 +25,8 @@ public final class TextFilter {
     * @param textStream Stream to be cleaned.
     * @return cleaned stream.
     */
-   public Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
-      return textStream.map(w -> w.replaceAll("[^a-zA-Z]", ""));
+   public static Stream<String> clearSymbolsAndNumbers(@NotNull Stream<String> textStream) {
+      return textStream.map(TextFilter::clearSymbolsAndNumbers);
    }
 
 }

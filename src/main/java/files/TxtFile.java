@@ -36,4 +36,8 @@ public class TxtFile implements ParseableFile<String> {
       return Files.readString(path);
    }
 
+   public Path path() {
+      return path;
+   }
+
 }
