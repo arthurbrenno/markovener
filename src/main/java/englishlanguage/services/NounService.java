@@ -14,30 +14,14 @@ import java.util.concurrent.ThreadLocalRandom;
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
-public class NounService implements Randomizeable<String> {
+public final class NounService {
 
-   private final Set<String> commonNouns;
-   private static NounService instance = null;
-
-   /**
-    * Constructor.
-    * The constructor of this class is responsible for loading the "commonNouns" instance variable by calling
-    * "loadNouns()" method, which implementation is private.
-    */
-   private NounService() {
-      commonNouns = loadNouns();
-   }
+   private static final Set<String> commonNouns = loadNouns();
 
    /**
-    * Gets the only instance of this class.
-    * @return NounService instance.
+    * This class is not instantiable
     */
-   public static NounService getInstance() {
-      if (instance == null) {
-         instance = new NounService();
-      }
-      return instance;
-   }
+   private NounService() {}
 
    /**
     * This method is responsible for loading all the common nouns of the english language and putting them into a
@@ -45,7 +29,7 @@ public class NounService implements Randomizeable<String> {
     * @return a HashSet of the common english nouns based on a dataset located at "resources."
     */
    @Contract(" -> new")
-   private @NotNull HashSet<String> loadNouns() {
+   private static @NotNull HashSet<String> loadNouns() {
       try (InputStream stream = NounService.class.getResourceAsStream("/parts_of_speech/nouns/91K_nouns.txt")) {
          return new HashSet<>(Arrays.asList(new String(stream.readAllBytes()).split(System.lineSeparator())));
       } catch (IOException e) {
@@ -57,7 +41,7 @@ public class NounService implements Randomizeable<String> {
     * Getter.
     * @return commonNouns HashSet.
     */
-   public Set<String> commonNouns() {
+   public static Set<String> commonNouns() {
       return commonNouns;
    }
 
@@ -66,7 +50,7 @@ public class NounService implements Randomizeable<String> {
     * @param word to be checked (will be converted to lower-case).
     * @return true if it is a noun, false if it's not.
     */
-   public boolean isNoun(@NotNull String word) {
+   public static boolean isNoun(@NotNull String word) {
       return commonNouns.contains(word.toLowerCase());
    }
 
@@ -74,7 +58,7 @@ public class NounService implements Randomizeable<String> {
     * Gets a random noun based on a dataset.
     * @return random noun.
     */
-   public String getRandom() {
+   public static String getRandom() {
       List<String> temp = new ArrayList<>(commonNouns);
       return temp.get(ThreadLocalRandom.current().nextInt(temp.size()));
    }

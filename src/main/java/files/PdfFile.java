@@ -33,8 +33,9 @@ public class PdfFile implements ParseableFile<String> {
     * @return String with all the content of the PdfFile instance.
     * @throws IOException if the file is not found.
     */
+   @Override
    public String getContent() throws IOException {
-      try(PDDocument pdfDocument = PDDocument.load(new File(path.toUri()))) {
+      try(PDDocument pdfDocument = PDDocument.load(path.toFile())) {
          return new PDFTextStripper().getText(pdfDocument);
       }
    }

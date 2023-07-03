@@ -4,7 +4,7 @@
     <img src="https://cdn.discordapp.com/attachments/815753127537410102/1123697678124069045/Logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Markovener</h3>
+  <h3 align="center">markovener.engine.Markovener</h3>
 
   <p align="center">
     An amazing open-source engine for english text generation that uses Markov Chains and a large english language dataset.
@@ -55,7 +55,7 @@ Here's why:
 * **Easy of use:** Anyone can use and understand the _Markovener_ in an easy way.
 * **Ngram power**: A common way of generating text is by dividing it into _ngrams_.
 
-There is also a common workflow that the Markovener could be used. And you can check it out in [documentation](https://arthurbrenno.github.io/javadoc-markovener)
+There is also a common workflow that the markovener.engine.Markovener could be used. And you can check it out in [documentation](https://arthurbrenno.github.io/javadoc-markovener)
 
 There are also test Classes Using JUnit for Unit Testing.
 
@@ -79,7 +79,7 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 
 * Go to releases
-* Find Markovener-1.0-SNAPSHOT.jar
+* Find markovener.engine.Markovener-1.0-SNAPSHOT.jar
 * Download it.
 * Drag and drop into your project (at dependencies).
 

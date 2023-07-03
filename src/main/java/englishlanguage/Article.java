@@ -6,10 +6,13 @@ import org.jetbrains.annotations.NotNull;
 /**
  * The main feature of this class is to store internally (as a String) an english
  * article.
+ * The idea of this class is to provide a short and easy way to classify a word in respect to english language. This
+ * could be used with the Markov Chains to create clearer random sentences and provide a good way to classify words.
  * @since 1.0 SNAPSHOT
  * @author Arthur Brenno
  */
 public class Article implements Word<String> {
+
    private final String article;
 
    /**
@@ -29,7 +32,7 @@ public class Article implements Word<String> {
     */
    @Contract(" -> new")
    public static @NotNull Article createRandom() {
-      return new Article(ArticleService.getInstance().getRandom());
+      return new Article(ArticleService.getRandom());
    }
 
    /**
@@ -40,7 +43,7 @@ public class Article implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Article createArticle(String article) {
-      if (ArticleService.getInstance().isArticle(article)) {
+      if (ArticleService.isArticle(article)) {
          throw new RuntimeException(String.format("%s is not an article.", article));
       }
       return new Article(article);
@@ -53,9 +56,8 @@ public class Article implements Word<String> {
     */
    @Contract("_ -> new")
    public static @NotNull Article createOrRandom(String article) {
-      ArticleService checker = ArticleService.getInstance();
-      if (!checker.isArticle(article)) {
-         return new Article(checker.getRandom());
+      if (!ArticleService.isArticle(article)) {
+         return new Article(ArticleService.getRandom());
       }
       return new Article(article);
    }
