@@ -111,7 +111,7 @@ You are free to contribute to this project. Any changes that would improve the e
 
 ### Next features:
 
-* GUI -> Comming next
+* GUI -> Coming next
 * Map occurences (eliminates duplicates)
 * Read from CSV (should contain ngrams)
 * Random sentence generator
