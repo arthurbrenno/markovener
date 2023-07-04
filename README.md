@@ -87,7 +87,7 @@ To get a local copy up and running follow these simple example steps.
 ## Usage
 
 Simple usage example:
-![Screenshot](https://media.discordapp.net/attachments/770745877269577729/1124059130408218735/Snaddp.png?width=1157&height=651)
+![Screenshot](https://media.discordapp.net/attachments/889160685626482850/1125581181761634365/image.png?width=654&height=172)
 
 
 _For more examples, please refer to the [Documentation](https://arthurbrenno.github.io/javadoc-markovener/)
