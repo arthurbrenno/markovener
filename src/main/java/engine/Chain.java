@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Markovener class provides short and elegant ways to store and get the token list and Markov-Chain data
+ * The Chain class provides short and elegant ways to store and get the token list and Markov-Chain data
  * structures of a text.
  * It has basic getters for each instance variable and enforces immutability for data safety.
  * This class is NOT thread-safe and should not be used in parallel.
