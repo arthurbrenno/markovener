@@ -19,10 +19,11 @@ import java.util.Map;
  * This class is NOT thread-safe and should not be used in parallel.
  * @since Alpha 1.0
  */
-public final class Chain {
+public final class Chain implements AutoCloseable{
 
    private final List<String> tokens;
-   private final HashMap<String, List<String>> markovChain;
+   private final Map<String, List<String>> markovChain;
+   //final Map<String, Map<String, Integer>> occurrences;
    private final String jsonRepresentation;
 
 
@@ -31,7 +32,7 @@ public final class Chain {
     * @param text that will be tokenized in a 'ngram way.'
     * @param order ngrams order.
     */
-   private Chain(String text, int order) {
+   Chain(String text, int order) {
       tokens = tokenizeNgrams(text, order);
       markovChain = mapNgrams(tokens);
       jsonRepresentation = new Gson().toJson(markovChain);
@@ -41,30 +42,10 @@ public final class Chain {
     * CONSTRUCTOR (words). It expects to receive a text that has already passed through a filtering process.
     * @param text that will be tokenized by words.
     */
-   private Chain(String text) {
+   Chain(String text) {
       tokens = tokenizeWords(text);
       markovChain = mapWords(tokens);
       jsonRepresentation = new Gson().toJson(markovChain);
-   }
-
-   /**
-    * Factory. Creates a Markovener object by calling the private constructor.
-    * @param filteredText to be tokenized and mapped.
-    * @param order to split the ngrams.
-    * @return an instance of the Markovener class tokenized and mapped by ngrams.
-    */
-   @Contract("_, _ -> new")
-   public static @NotNull Chain createByNgrams(String filteredText, int order) {
-      return new Chain(filteredText, order);
-   }
-
-   /**
-    * Factory. Creates a Markovener object by calling the private constructor.
-    * @param filteredText to be tokenized and mapped.
-    * @return an instance of the Markovener class tokenized and mapped by words.
-    */
-   public static @NotNull Chain createByWords(String filteredText) {
-      return new Chain(filteredText);
    }
 
    /**
@@ -167,6 +148,16 @@ public final class Chain {
          chain.get(key).add(value);
       }
       return chain;
+   }
+
+   /**
+    * Clears all the resources that the Chain object is holding. Which are the list and the map.
+    * @throws Exception e.
+    */
+   @Override
+   public void close() throws Exception {
+      tokens.clear();
+      markovChain.clear();
    }
 
 }
