@@ -79,9 +79,9 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 
 * Go to releases
-* Find engine.Chain-1.0-SNAPSHOT.jar
+* Find engine.Chain-1.0.1-ALPHA.jar
 * Download it.
-* Drag and drop into your project (at dependencies).
+* Drag and drop into your project (dependencies).
 
 
 ## Usage
