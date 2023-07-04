@@ -122,5 +122,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/arthurbrenno
 
 ## Authors
 
-* **Arthur Brenno** - *Sys. Inf. Student at Brazil* - [Arthur Brenno](https://github.com/arthurbrenno) - *Developer*
+* **Arthur Brenno** - *4th semester Sys. Inf. Student at Brazil* - [Arthur Brenno](https://github.com/arthurbrenno) - *Developer*
 
