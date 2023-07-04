@@ -19,7 +19,7 @@ import java.util.Map;
  * This class is NOT thread-safe and should not be used in parallel.
  * @since Alpha 1.0
  */
-public final class Markovener {
+public final class Chain {
 
    private final List<String> tokens;
    private final HashMap<String, List<String>> markovChain;
@@ -31,7 +31,7 @@ public final class Markovener {
     * @param text that will be tokenized in a 'ngram way.'
     * @param order ngrams order.
     */
-   private Markovener(String text, int order) {
+   private Chain(String text, int order) {
       tokens = tokenizeNgrams(text, order);
       markovChain = mapNgrams(tokens);
       jsonRepresentation = new Gson().toJson(markovChain);
@@ -41,7 +41,7 @@ public final class Markovener {
     * CONSTRUCTOR (words). It expects to receive a text that has already passed through a filtering process.
     * @param text that will be tokenized by words.
     */
-   private Markovener(String text) {
+   private Chain(String text) {
       tokens = tokenizeWords(text);
       markovChain = mapWords(tokens);
       jsonRepresentation = new Gson().toJson(markovChain);
@@ -54,8 +54,8 @@ public final class Markovener {
     * @return an instance of the Markovener class tokenized and mapped by ngrams.
     */
    @Contract("_, _ -> new")
-   public static @NotNull Markovener createByNgrams(String filteredText, int order) {
-      return new Markovener(filteredText, order);
+   public static @NotNull Chain createByNgrams(String filteredText, int order) {
+      return new Chain(filteredText, order);
    }
 
    /**
@@ -63,8 +63,8 @@ public final class Markovener {
     * @param filteredText to be tokenized and mapped.
     * @return an instance of the Markovener class tokenized and mapped by words.
     */
-   public static @NotNull Markovener createByWords(String filteredText) {
-      return new Markovener(filteredText);
+   public static @NotNull Chain createByWords(String filteredText) {
+      return new Chain(filteredText);
    }
 
    /**

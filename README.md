@@ -55,7 +55,7 @@ Here's why:
 * **Easy of use:** Anyone can use and understand the _Markovener_ in an easy way.
 * **Ngram power**: A common way of generating text is by dividing it into _ngrams_.
 
-There is also a common workflow that the engine.Markovener could be used. And you can check it out in [documentation](https://arthurbrenno.github.io/javadoc-markovener)
+There is also a common workflow that the engine.Chain could be used. And you can check it out in [documentation](https://arthurbrenno.github.io/javadoc-markovener)
 
 There are also test Classes Using JUnit for Unit Testing.
 
@@ -79,7 +79,7 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 
 * Go to releases
-* Find engine.Markovener-1.0-SNAPSHOT.jar
+* Find engine.Chain-1.0-SNAPSHOT.jar
 * Download it.
 * Drag and drop into your project (at dependencies).
 
