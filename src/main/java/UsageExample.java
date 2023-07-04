@@ -1,10 +1,15 @@
-import markovener.engine.Markovener;
+import engine.Markovener;
+import util.TextFilter;
 
 import java.io.IOException;
-import java.nio.file.Path;
 
 public class UsageExample {
+
    public static void main(String[] args) throws IOException {
-      Markovener.createByNgrams("Markovener is cool!", 2).save(Path.of("src","test","outputtest"));
+
+      final String text = TextFilter.clearSymbolsAndNumbers("1 - Markovener is soooo cool!");
+      Markovener markovener = Markovener.createByNgrams(text, 2);
+
    }
+
 }
