@@ -1,4 +1,5 @@
 <br/>
+![Logo](https://cdn.discordapp.com/attachments/815753127537410102/1123697678124069045/Logo.png)
 <p align="center">
   <a href="https://github.com/arthurbrenno/markovener">
     <img src="https://cdn.discordapp.com/attachments/815753127537410102/1123697678124069045/Logo.png" alt="Logo" width="80" height="80">
