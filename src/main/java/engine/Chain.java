@@ -1,16 +1,12 @@
 package engine;
 import com.google.gson.Gson;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The Chain class provides short and elegant ways to store and get the token list and Markov-Chain data
@@ -23,7 +19,7 @@ public final class Chain implements AutoCloseable{
 
    private final List<String> tokens;
    private final Map<String, List<String>> markovChain;
-   //final Map<String, Map<String, Integer>> occurrences;
+   private Map<String, Map<String, Integer>> occurrences;
    private final String jsonRepresentation;
 
 
@@ -35,6 +31,7 @@ public final class Chain implements AutoCloseable{
    Chain(String text, int order) {
       tokens = tokenizeNgrams(text, order);
       markovChain = mapNgrams(tokens);
+      occurrences = mapOccurrences(markovChain);
       jsonRepresentation = new Gson().toJson(markovChain);
    }
 
@@ -45,6 +42,7 @@ public final class Chain implements AutoCloseable{
    Chain(String text) {
       tokens = tokenizeWords(text);
       markovChain = mapWords(tokens);
+      occurrences = mapOccurrences(markovChain);
       jsonRepresentation = new Gson().toJson(markovChain);
    }
 
@@ -60,20 +58,20 @@ public final class Chain implements AutoCloseable{
     * Getter
     * @return markov-chain map - instance variable.
     */
-   public Map<String, List<String>> markovChain() {
+   public Map<String, List<String>> getMarkovChain() {
       return markovChain;
    }
 
    /**
     * Getter
-    * @return jsonRepresentation - instance variable.
+    * @return getJsonRepresentation - instance variable.
     */
-   public String jsonRepresentation() {
+   public String getJsonRepresentation() {
       return jsonRepresentation;
    }
 
    /**
-    * Saves the jsonRepresentation String instance variable into a new json file.
+    * Saves the getJsonRepresentation String instance variable into a new json file.
     * @param directory to create a new json file
     * @throws IOException if some IOException occurs. Your path might be invalid or the directory is not accessible by
     * the application.
@@ -82,8 +80,19 @@ public final class Chain implements AutoCloseable{
       final Path finalPath = Path.of(new StringBuilder(directory.toString()).append("\\output.json").toString());
       boolean success = new File(finalPath.toUri()).createNewFile();
       if (success) {
-         Files.write(finalPath, jsonRepresentation().getBytes());
+         Files.write(finalPath, getJsonRepresentation().getBytes());
       }
+   }
+
+   /**
+    * Clears all the resources that the Chain object is holding. Which are the list and the map.
+    * @throws Exception e.
+    */
+   @Override
+   public void close() throws Exception {
+      tokens.clear();
+      markovChain.clear();
+      occurrences.clear();
    }
 
    /**
@@ -115,7 +124,7 @@ public final class Chain implements AutoCloseable{
     * @return a HashMap of the ngrams.
     * @apiNote the mapped ngrams are taken by current-ngram + order.
     */
-   private @NotNull HashMap<String, List<String>> mapNgrams(@NotNull final List<String> tokens) {
+   private @NotNull Map<String, List<String>> mapNgrams(@NotNull final List<String> tokens) {
       final HashMap<String, List<String>> chain = new HashMap<>(tokens.size());
       final int order = tokens.get(0).length();
       for (int i = 0; i < tokens.size() - order; ++i) {
@@ -136,7 +145,7 @@ public final class Chain implements AutoCloseable{
     * @return a HashMap of the words.
     * @apiNote the mapped words are taken by current-word + 1.
     */
-   private @NotNull HashMap<String, List<String>> mapWords(@NotNull final List<String> tokens) {
+   private @NotNull Map<String, List<String>> mapWords(@NotNull final List<String> tokens) {
       final HashMap<String, List<String>> chain = new HashMap<>(tokens.size());
       for (int i = 0; i < tokens.size() - 1; ++i) {
          String key = tokens.get(i);
@@ -150,14 +159,17 @@ public final class Chain implements AutoCloseable{
       return chain;
    }
 
-   /**
-    * Clears all the resources that the Chain object is holding. Which are the list and the map.
-    * @throws Exception e.
-    */
-   @Override
-   public void close() throws Exception {
-      tokens.clear();
-      markovChain.clear();
+   private @NotNull Map<String, Map<String, Integer>> mapOccurrences(@NotNull Map<String, List<String>> elementToNextElements) {
+      final Map<String, Map<String, Integer>> occurrences = new HashMap<>();
+      for (Map.Entry<String, List<String>> entry : elementToNextElements.entrySet()) {
+         Map<String, Integer> nextElements = new HashMap<>();
+         for (String nextElement : entry.getValue()) {
+            nextElements.computeIfAbsent(nextElement, k -> 0);
+            nextElements.put(nextElement, nextElements.get(nextElement) + 1);
+         }
+         occurrences.put(entry.getKey(), nextElements);
+      }
+      return occurrences;
    }
 
 }
