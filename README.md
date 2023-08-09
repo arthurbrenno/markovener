@@ -15,7 +15,7 @@
     <br/>
     <a href="https://github.com/arthurbrenno/markovener">View Demo</a>
     .
-    <a href="https://github.com/arthurbrenno/markovener/issues">Report Bug</a>
+    <a href="https://github.com/arthurbrenno/markovener/issues">Report Bugs</a>
     .
     <a href="https://github.com/arthurbrenno/markovener/issues">Request Feature</a>
 
