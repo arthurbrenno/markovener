@@ -13,7 +13,6 @@
     <a href="https://arthurbrenno.github.io/javadoc-markovener" target=”_blank”><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/arthurbrenno/markovener">View Demo</a>
     .
     <a href="https://github.com/arthurbrenno/markovener/issues">Report Bugs</a>
     .
